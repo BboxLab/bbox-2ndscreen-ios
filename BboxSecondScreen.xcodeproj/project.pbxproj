@@ -1,0 +1,459 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D9346BBA197024E30025DD02 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9346BB9197024E30025DD02 /* Foundation.framework */; };
+		D9346BC8197024E30025DD02 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9346BC7197024E30025DD02 /* XCTest.framework */; };
+		D9346BC9197024E30025DD02 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9346BB9197024E30025DD02 /* Foundation.framework */; };
+		D9346BCB197024E30025DD02 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9346BCA197024E30025DD02 /* UIKit.framework */; };
+		D9346BCE197024E30025DD02 /* libBboxSecondScreen.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D9346BB6197024E30025DD02 /* libBboxSecondScreen.a */; };
+		D9346BD4197024E30025DD02 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D9346BD2197024E30025DD02 /* InfoPlist.strings */; };
+		D9346BD6197024E30025DD02 /* BboxSecondScreenTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D9346BD5197024E30025DD02 /* BboxSecondScreenTests.m */; };
+		D9346BEE1970259A0025DD02 /* BSSApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = D9346BE01970259A0025DD02 /* BSSApplication.m */; };
+		D9346BEF1970259A0025DD02 /* BSSApplicationsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D9346BE21970259A0025DD02 /* BSSApplicationsManager.m */; };
+		D9346BF01970259A0025DD02 /* BSSBboxRestClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D9346BE41970259A0025DD02 /* BSSBboxRestClient.m */; };
+		D9346BF11970259A0025DD02 /* BSSRemoteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D9346BE61970259A0025DD02 /* BSSRemoteManager.m */; };
+		D9346BF21970259A0025DD02 /* BSSBboxManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D9346BE81970259A0025DD02 /* BSSBboxManager.m */; };
+		D9346BF31970259A0025DD02 /* BSSBbox.m in Sources */ = {isa = PBXBuildFile; fileRef = D9346BEA1970259A0025DD02 /* BSSBbox.m */; };
+		D9346BF41970259A0025DD02 /* BSSNotificationsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D9346BEC1970259A0025DD02 /* BSSNotificationsManager.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D9346BCC197024E30025DD02 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D9346BAE197024E30025DD02 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D9346BB5197024E30025DD02;
+			remoteInfo = BboxSecondScreen;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D9346BB4197024E30025DD02 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		D9346BB6197024E30025DD02 /* libBboxSecondScreen.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBboxSecondScreen.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D9346BB9197024E30025DD02 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D9346BBD197024E30025DD02 /* BboxSecondScreen-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BboxSecondScreen-Prefix.pch"; sourceTree = "<group>"; };
+		D9346BC6197024E30025DD02 /* BboxSecondScreenTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BboxSecondScreenTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D9346BC7197024E30025DD02 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		D9346BCA197024E30025DD02 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		D9346BD1197024E30025DD02 /* BboxSecondScreenTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BboxSecondScreenTests-Info.plist"; sourceTree = "<group>"; };
+		D9346BD3197024E30025DD02 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D9346BD5197024E30025DD02 /* BboxSecondScreenTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BboxSecondScreenTests.m; sourceTree = "<group>"; };
+		D9346BDF1970259A0025DD02 /* BSSApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSSApplication.h; sourceTree = "<group>"; };
+		D9346BE01970259A0025DD02 /* BSSApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSSApplication.m; sourceTree = "<group>"; };
+		D9346BE11970259A0025DD02 /* BSSApplicationsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSSApplicationsManager.h; sourceTree = "<group>"; };
+		D9346BE21970259A0025DD02 /* BSSApplicationsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSSApplicationsManager.m; sourceTree = "<group>"; };
+		D9346BE31970259A0025DD02 /* BSSBboxRestClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSSBboxRestClient.h; sourceTree = "<group>"; };
+		D9346BE41970259A0025DD02 /* BSSBboxRestClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSSBboxRestClient.m; sourceTree = "<group>"; };
+		D9346BE51970259A0025DD02 /* BSSRemoteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSSRemoteManager.h; sourceTree = "<group>"; };
+		D9346BE61970259A0025DD02 /* BSSRemoteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSSRemoteManager.m; sourceTree = "<group>"; };
+		D9346BE71970259A0025DD02 /* BSSBboxManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSSBboxManager.h; sourceTree = "<group>"; };
+		D9346BE81970259A0025DD02 /* BSSBboxManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSSBboxManager.m; sourceTree = "<group>"; };
+		D9346BE91970259A0025DD02 /* BSSBbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSSBbox.h; sourceTree = "<group>"; };
+		D9346BEA1970259A0025DD02 /* BSSBbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSSBbox.m; sourceTree = "<group>"; };
+		D9346BEB1970259A0025DD02 /* BSSNotificationsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSSNotificationsManager.h; sourceTree = "<group>"; };
+		D9346BEC1970259A0025DD02 /* BSSNotificationsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSSNotificationsManager.m; sourceTree = "<group>"; };
+		D9346BED1970259A0025DD02 /* BSSBboxSecondScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSSBboxSecondScreen.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D9346BB3197024E30025DD02 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D9346BBA197024E30025DD02 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D9346BC3197024E30025DD02 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D9346BC8197024E30025DD02 /* XCTest.framework in Frameworks */,
+				D9346BCB197024E30025DD02 /* UIKit.framework in Frameworks */,
+				D9346BCE197024E30025DD02 /* libBboxSecondScreen.a in Frameworks */,
+				D9346BC9197024E30025DD02 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D9346BAD197024E30025DD02 = {
+			isa = PBXGroup;
+			children = (
+				D9346BBB197024E30025DD02 /* BboxSecondScreen */,
+				D9346BCF197024E30025DD02 /* BboxSecondScreenTests */,
+				D9346BB8197024E30025DD02 /* Frameworks */,
+				D9346BB7197024E30025DD02 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D9346BB7197024E30025DD02 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D9346BB6197024E30025DD02 /* libBboxSecondScreen.a */,
+				D9346BC6197024E30025DD02 /* BboxSecondScreenTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D9346BB8197024E30025DD02 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D9346BB9197024E30025DD02 /* Foundation.framework */,
+				D9346BC7197024E30025DD02 /* XCTest.framework */,
+				D9346BCA197024E30025DD02 /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D9346BBB197024E30025DD02 /* BboxSecondScreen */ = {
+			isa = PBXGroup;
+			children = (
+				D9346BDF1970259A0025DD02 /* BSSApplication.h */,
+				D9346BE01970259A0025DD02 /* BSSApplication.m */,
+				D9346BE11970259A0025DD02 /* BSSApplicationsManager.h */,
+				D9346BE21970259A0025DD02 /* BSSApplicationsManager.m */,
+				D9346BE31970259A0025DD02 /* BSSBboxRestClient.h */,
+				D9346BE41970259A0025DD02 /* BSSBboxRestClient.m */,
+				D9346BE51970259A0025DD02 /* BSSRemoteManager.h */,
+				D9346BE61970259A0025DD02 /* BSSRemoteManager.m */,
+				D9346BE71970259A0025DD02 /* BSSBboxManager.h */,
+				D9346BE81970259A0025DD02 /* BSSBboxManager.m */,
+				D9346BE91970259A0025DD02 /* BSSBbox.h */,
+				D9346BEA1970259A0025DD02 /* BSSBbox.m */,
+				D9346BEB1970259A0025DD02 /* BSSNotificationsManager.h */,
+				D9346BEC1970259A0025DD02 /* BSSNotificationsManager.m */,
+				D9346BED1970259A0025DD02 /* BSSBboxSecondScreen.h */,
+				D9346BBC197024E30025DD02 /* Supporting Files */,
+			);
+			path = BboxSecondScreen;
+			sourceTree = "<group>";
+		};
+		D9346BBC197024E30025DD02 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D9346BBD197024E30025DD02 /* BboxSecondScreen-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D9346BCF197024E30025DD02 /* BboxSecondScreenTests */ = {
+			isa = PBXGroup;
+			children = (
+				D9346BD5197024E30025DD02 /* BboxSecondScreenTests.m */,
+				D9346BD0197024E30025DD02 /* Supporting Files */,
+			);
+			path = BboxSecondScreenTests;
+			sourceTree = "<group>";
+		};
+		D9346BD0197024E30025DD02 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D9346BD1197024E30025DD02 /* BboxSecondScreenTests-Info.plist */,
+				D9346BD2197024E30025DD02 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D9346BB5197024E30025DD02 /* BboxSecondScreen */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D9346BD9197024E40025DD02 /* Build configuration list for PBXNativeTarget "BboxSecondScreen" */;
+			buildPhases = (
+				D9346BB2197024E30025DD02 /* Sources */,
+				D9346BB3197024E30025DD02 /* Frameworks */,
+				D9346BB4197024E30025DD02 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BboxSecondScreen;
+			productName = BboxSecondScreen;
+			productReference = D9346BB6197024E30025DD02 /* libBboxSecondScreen.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		D9346BC5197024E30025DD02 /* BboxSecondScreenTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D9346BDC197024E40025DD02 /* Build configuration list for PBXNativeTarget "BboxSecondScreenTests" */;
+			buildPhases = (
+				D9346BC2197024E30025DD02 /* Sources */,
+				D9346BC3197024E30025DD02 /* Frameworks */,
+				D9346BC4197024E30025DD02 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D9346BCD197024E30025DD02 /* PBXTargetDependency */,
+			);
+			name = BboxSecondScreenTests;
+			productName = BboxSecondScreenTests;
+			productReference = D9346BC6197024E30025DD02 /* BboxSecondScreenTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D9346BAE197024E30025DD02 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = BSS;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Bouygues Telecom";
+			};
+			buildConfigurationList = D9346BB1197024E30025DD02 /* Build configuration list for PBXProject "BboxSecondScreen" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = D9346BAD197024E30025DD02;
+			productRefGroup = D9346BB7197024E30025DD02 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D9346BB5197024E30025DD02 /* BboxSecondScreen */,
+				D9346BC5197024E30025DD02 /* BboxSecondScreenTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D9346BC4197024E30025DD02 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D9346BD4197024E30025DD02 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D9346BB2197024E30025DD02 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D9346BEE1970259A0025DD02 /* BSSApplication.m in Sources */,
+				D9346BF31970259A0025DD02 /* BSSBbox.m in Sources */,
+				D9346BF11970259A0025DD02 /* BSSRemoteManager.m in Sources */,
+				D9346BEF1970259A0025DD02 /* BSSApplicationsManager.m in Sources */,
+				D9346BF21970259A0025DD02 /* BSSBboxManager.m in Sources */,
+				D9346BF41970259A0025DD02 /* BSSNotificationsManager.m in Sources */,
+				D9346BF01970259A0025DD02 /* BSSBboxRestClient.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D9346BC2197024E30025DD02 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D9346BD6197024E30025DD02 /* BboxSecondScreenTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D9346BCD197024E30025DD02 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D9346BB5197024E30025DD02 /* BboxSecondScreen */;
+			targetProxy = D9346BCC197024E30025DD02 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D9346BD2197024E30025DD02 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D9346BD3197024E30025DD02 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D9346BD7197024E30025DD02 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		D9346BD8197024E30025DD02 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D9346BDA197024E40025DD02 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/BboxSecondScreen.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BboxSecondScreen/BboxSecondScreen-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		D9346BDB197024E40025DD02 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/BboxSecondScreen.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BboxSecondScreen/BboxSecondScreen-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		D9346BDD197024E40025DD02 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BboxSecondScreen/BboxSecondScreen-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "BboxSecondScreenTests/BboxSecondScreenTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		D9346BDE197024E40025DD02 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BboxSecondScreen/BboxSecondScreen-Prefix.pch";
+				INFOPLIST_FILE = "BboxSecondScreenTests/BboxSecondScreenTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D9346BB1197024E30025DD02 /* Build configuration list for PBXProject "BboxSecondScreen" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D9346BD7197024E30025DD02 /* Debug */,
+				D9346BD8197024E30025DD02 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D9346BD9197024E40025DD02 /* Build configuration list for PBXNativeTarget "BboxSecondScreen" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D9346BDA197024E40025DD02 /* Debug */,
+				D9346BDB197024E40025DD02 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D9346BDC197024E40025DD02 /* Build configuration list for PBXNativeTarget "BboxSecondScreenTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D9346BDD197024E40025DD02 /* Debug */,
+				D9346BDE197024E40025DD02 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D9346BAE197024E30025DD02 /* Project object */;
+}

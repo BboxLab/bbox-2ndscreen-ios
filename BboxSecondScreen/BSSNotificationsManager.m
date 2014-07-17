@@ -12,6 +12,9 @@
 
 @synthesize channelId;
 
+static NSString * const NOTIFICATION = @"notification";
+
+
 BboxRestClient * client;
 SRWebSocket * webSocket;
 NSString * applicationId;
@@ -118,7 +121,7 @@ NSMutableArray * notifications;
     [body setObject:applicationId forKey:@"appID"];
     [body setObject:res forKey:@"resources"];
     
-    [client post:@"Notification" withBody:body thenCallWithHeaders:^(BOOL success, NSInteger statusCode, NSDictionary *headers, id response, NSError *error) {
+    [client post:NOTIFICATION withBody:body thenCallWithHeaders:^(BOOL success, NSInteger statusCode, NSDictionary *headers, id response, NSError *error) {
         if (success) {
             NSArray * urlArray = [[headers objectForKey:@"Location"] componentsSeparatedByString:@"/"];
             self.channelId = [urlArray objectAtIndex:[urlArray count]-1];
@@ -126,7 +129,7 @@ NSMutableArray * notifications;
         callback(success, error);
     }];
     
-    [client post:@"Notification" withBody:body thenCall:^(BOOL success, NSInteger statusCode, id response, NSError *error) {
+    [client post:NOTIFICATION withBody:body thenCall:^(BOOL success, NSInteger statusCode, id response, NSError *error) {
         
     }];
 }

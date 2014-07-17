@@ -20,7 +20,7 @@
 
 - (void) getApplicationsThenCall:(void (^)(BOOL, NSMutableArray *, NSError *))callback {
     
-    [client get:@"Applications" withParams:nil thenCall:^(BOOL success, NSInteger statusCode, id response, NSError *error) {
+    [client get:@"applications" withParams:nil thenCall:^(BOOL success, NSInteger statusCode, id response, NSError *error) {
         if (success) {
             NSArray* res = response;
             NSMutableArray* apps = [[NSMutableArray alloc] init];
@@ -131,7 +131,7 @@
     
     NSDictionary * body = @{@"appName": appName};
     
-    [client post:@"Applications/Register" withBody:body thenCallWithHeaders:^(BOOL success, NSInteger statusCode, NSDictionary *headers, id response, NSError *error) {
+    [client post:@"applications/register" withBody:body thenCallWithHeaders:^(BOOL success, NSInteger statusCode, NSDictionary *headers, id response, NSError *error) {
         if (success) {
             NSArray * urlArray = [[headers objectForKey:@"Location"] componentsSeparatedByString:@"/"];
             callback(success, [urlArray objectAtIndex:[urlArray count]-1], error);

@@ -15,6 +15,9 @@
 
 @synthesize callback;
 
+static NSString * const MDNS_TYPE = @"_workstation._tcp";
+static NSString * const MDNS_DOMAIN = @"local";
+
 NSMutableArray * resolvers;
 
 - (void) startLookingForBboxThenCall:(void (^)(Bbox *))initialCallback {
@@ -29,18 +32,16 @@ NSMutableArray * resolvers;
     
     self.serviceBrowser = [[NSNetServiceBrowser alloc] init];
     self.serviceBrowser.delegate = self;
-    [self.serviceBrowser searchForServicesOfType:@"_workstation._tcp" inDomain:@"local"];
+    [self.serviceBrowser searchForServicesOfType:MDNS_TYPE inDomain:MDNS_DOMAIN];
     
 }
 
 #pragma mark NSNetserviceBrowserDelegate
 - (void)netServiceBrowser:(NSNetServiceBrowser *)aNetServiceBrowser didFindService:(NSNetService *)aNetService moreComing:(BOOL)moreComing
 {
-    if ([aNetService.name hasPrefix:@"OpenSTB"]) {
-        aNetService.delegate = self;
-        [aNetService resolveWithTimeout:0.0];
-        [resolvers addObject:aNetService];
-    }
+    aNetService.delegate = self;
+    [aNetService resolveWithTimeout:0.0];
+    [resolvers addObject:aNetService];
 }
 
 - (void)netServiceDidResolveAddress:(NSNetService *)service {
@@ -51,12 +52,11 @@ NSMutableArray * resolvers;
         if (sockFamily == AF_INET) {
             const char* addressStr = inet_ntop(sockFamily,
                                                &(socketAddress->sin_addr), addressBuffer,
-                                               sizeof(addressBuffer));
-            
+                                               sizeof(addressBuffer));            
             if (addressStr) {
                 NSString * adr = [[NSString alloc] initWithUTF8String:addressStr];
                 self.callback([[Bbox alloc]initWithIp:adr]);
-                NSLog(@"Found OpenSTB at %s", addressStr);
+                NSLog(@"Found box at %s", addressStr);
             }
         }
     }

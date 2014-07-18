@@ -15,7 +15,7 @@
 
 @synthesize callback;
 
-static NSString * const MDNS_TYPE = @"_workstation._tcp";
+static NSString * const MDNS_TYPE = @"_http._tcp";
 static NSString * const MDNS_DOMAIN = @"local";
 
 NSMutableArray * resolvers;
@@ -39,13 +39,16 @@ NSMutableArray * resolvers;
 #pragma mark NSNetserviceBrowserDelegate
 - (void)netServiceBrowser:(NSNetServiceBrowser *)aNetServiceBrowser didFindService:(NSNetService *)aNetService moreComing:(BOOL)moreComing
 {
-    aNetService.delegate = self;
-    [aNetService resolveWithTimeout:0.0];
-    [resolvers addObject:aNetService];
+    if ([[aNetService name] isEqualToString:@"Bboxapi"]) {
+        aNetService.delegate = self;
+        [aNetService resolveWithTimeout:0.0];
+        [resolvers addObject:aNetService];
+    }
 }
 
 - (void)netServiceDidResolveAddress:(NSNetService *)service {
     for (NSData* data in [service addresses]) {
+        NSLog(@"Description %@", [data description]);
         char addressBuffer[100];
         struct sockaddr_in* socketAddress = (struct sockaddr_in*) [data bytes];
         int sockFamily = socketAddress->sin_family;

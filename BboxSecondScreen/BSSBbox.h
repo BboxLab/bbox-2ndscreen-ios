@@ -13,14 +13,40 @@
 #import "BSSBboxRestClient.h"
 #import "BSSNotificationsManager.h"
 
+/**
+ Object representation of a Bbox.
+ */
 @interface Bbox : NSObject
 
+/**
+ RemoteManager for the current Bbox
+ */
 @property RemoteManager * remoteManager;
+
+/**
+ ApplicationsManager for the current Bbox
+ */
 @property ApplicationsManager * applicationsManager;
+
+/**
+ BboxRestClient for the current Bbox
+ */
 @property BboxRestClient * bboxRestClient;
+
+/**
+ NotificationsManager for the current Bbox
+ @warning You have to instanciate it when you need it.
+ */
 @property NotificationsManager * notificationsManager;
+
+/**
+ ip of the current Bbox
+ */
 @property NSString * ip;
 
+/**
+ Init a Bbox object with the provided ip. It will instanciate a BboxRestClient, RemoteManager, and ApplicationsManager
+ */
 - (id) initWithIp:(NSString *)ip;
 
 @end

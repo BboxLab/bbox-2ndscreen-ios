@@ -9,13 +9,19 @@
 #import <Foundation/Foundation.h>
 #import "BSSBbox.h"
 
+/**
+ ‘BboxManager‘ is a class made to help find Bbox on the LAN. It use mDNS protocol.
+ */
 @interface BboxManager : NSObject <NSNetServiceDelegate, NSNetServiceBrowserDelegate>
 
-@property NSNetServiceBrowser *serviceBrowser;
-@property NSNetService *serviceResolver;
-
+/**
+ A callback called when a bbox is found. it return a BSSBbox object.
+ */
 @property (nonatomic, copy) void (^callback)(Bbox *);
 
+/**
+ Method to start looking for bbox on LAN. Call the provided callback for every Bbox found.
+ */
 - (void) startLookingForBboxThenCall:(void (^)(Bbox * bbox))callback;
 
 @end

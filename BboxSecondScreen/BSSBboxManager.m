@@ -20,19 +20,22 @@ static NSString * const MDNS_DOMAIN = @"local";
 
 NSMutableArray * resolvers;
 
+NSNetServiceBrowser *serviceBrowser;
+NSNetService *serviceResolver;
+
 - (void) startLookingForBboxThenCall:(void (^)(Bbox *))initialCallback {
     
-    if (self.serviceBrowser) {
-        [self.serviceBrowser stop];
+    if (serviceBrowser) {
+        [serviceBrowser stop];
     }
     
     resolvers = [[NSMutableArray alloc] init];
     
     self.callback = initialCallback;
     
-    self.serviceBrowser = [[NSNetServiceBrowser alloc] init];
-    self.serviceBrowser.delegate = self;
-    [self.serviceBrowser searchForServicesOfType:MDNS_TYPE inDomain:MDNS_DOMAIN];
+    serviceBrowser = [[NSNetServiceBrowser alloc] init];
+    serviceBrowser.delegate = self;
+    [serviceBrowser searchForServicesOfType:MDNS_TYPE inDomain:MDNS_DOMAIN];
     
 }
 

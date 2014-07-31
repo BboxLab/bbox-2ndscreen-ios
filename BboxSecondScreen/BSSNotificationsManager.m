@@ -8,6 +8,16 @@
 
 #import "BSSNotificationsManager.h"
 
+/**
+ Private methods for the Websocket delegate
+ */
+@interface NotificationsManager()
+
+- (void)webSocketDidOpen:(SRWebSocket *)newWebSocket;
+- (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message;
+
+@end
+
 @implementation NotificationsManager
 
 @synthesize channelId;

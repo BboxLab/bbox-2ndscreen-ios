@@ -12,14 +12,16 @@
 
 @synthesize appId;
 @synthesize appName;
+@synthesize packageName;
 @synthesize logoUrl;
 @synthesize state;
 
-- (id) initAppName:(NSString *)initialAppName withAppId:(NSString *)initialAppId logoUrl:(NSString *)initialLogoUrl andState:(ApplicationStateType)initialState {
+- (id) initAppName:(NSString *)initialAppName withAppId:(NSString *)initialAppId withPackageName:(NSString *)initialPackageName logoUrl:(NSString *)initialLogoUrl andState:(ApplicationStateType)initialState {
     self.appName = initialAppName;
     self.appId = initialAppId;
     self.logoUrl = initialLogoUrl;
     self.state = initialState;
+    self.packageName = initialPackageName;
     return self;
 }
 

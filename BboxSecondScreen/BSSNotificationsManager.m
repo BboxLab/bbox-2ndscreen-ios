@@ -115,10 +115,10 @@ NSMutableArray * notifications;
     NSMutableArray * res = [[NSMutableArray alloc] init];
     
     for (NSString * notif in notifications) {
-        [res addObject:@{@"resourceID":notif}];
+        [res addObject:@{@"resourceId":notif}];
     }
     
-    [body setObject:applicationId forKey:@"appID"];
+    [body setObject:applicationId forKey:@"appId"];
     [body setObject:res forKey:@"resources"];
     
     [client post:NOTIFICATION withBody:body thenCallWithHeaders:^(BOOL success, NSInteger statusCode, NSDictionary *headers, id response, NSError *error) {
@@ -137,15 +137,10 @@ NSMutableArray * notifications;
 - (void)sendThisMessage:(NSString *)message toChannelId:(NSString *)channelId {
     
     NSMutableDictionary * toSend = [[NSMutableDictionary alloc] init];
-    NSMutableDictionary * event = [[NSMutableDictionary alloc] init];
     
-    [toSend setObject:self.channelId forKey:@"channelId"];
-    
-    [event setObject:applicationId forKey:@"appID"];
-    [event setObject:message forKey:@"message"];
-    
-    [toSend setObject:event forKey:@"event"];
-    
+    [toSend setObject:self.channelId forKey:@"destination"];
+    [toSend setObject:applicationId forKey:@"source"];
+    [toSend setObject:message forKey:@"body"];
     
     NSError *error;
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:toSend

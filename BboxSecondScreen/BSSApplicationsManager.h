@@ -18,15 +18,15 @@
 
 - (void) getApplicationsThenCall:(void (^)(BOOL success, NSMutableArray *applications, NSError *error))callback;
 
-- (void) getApplicationWithThatAppName:(NSString*)name ThenCall:(void (^)(BOOL success, Application *application, NSError *error))callback;
+- (void) getApplicationWithThatPackageName:(NSString*)name ThenCall:(void (^)(BOOL success, Application *application, NSError *error))callback;
 
 - (void) startApplication:(Application*)application;
 
-- (void) startApplicationWithThatAppName:(NSString *)name;
+- (void) startApplicationWithThatPackageName:(NSString *)name;
 
 - (void) startApplication:(Application *)application thenCall:(void (^)(BOOL success, NSError *error))callback;
 
-- (void) startApplicationWithThatAppName:(NSString *)name thenCall:(void (^)(BOOL success, NSError *error))callback;
+- (void) startApplicationWithThatPackageName:(NSString *)name thenCall:(void (^)(BOOL success, NSError *error))callback;
 
 - (void) stopApplication:(Application*)application;
 

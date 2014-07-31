@@ -26,23 +26,19 @@
             NSMutableArray* apps = [[NSMutableArray alloc] init];
             for(NSDictionary* app in res) {
                 NSString *appName = [app objectForKey:@"appName"];
-                NSString *logoUrl = [app objectForKey:@"icon"];
-                NSArray *appInstance = [app objectForKey:@"appInstances"];
+                NSString *logoUrl = [app objectForKey:@"logoUrl"];
+                NSString *packageName = [app objectForKey:@"packageName"];
+                NSString *appId = [app objectForKey:@"appId"];
+                
                 ApplicationStateType state;
-                NSString *appId = nil;
-                if ([appInstance count] == 0) {
-                    state = STOPPED;
+                if ([[app objectForKey:@"appState"] isEqual: @"foreground"]) {
+                    state = FOREGROUND;
+                } else if ([[app objectForKey:@"appState"] isEqual: @"background"]) {
+                    state = BACKGROUND;
                 } else {
-                    NSDictionary* instance = [appInstance objectAtIndex:0];
-                    appId = [instance objectForKey:@"appId"];
-                    instance = [instance objectForKey:@"appState"];
-                    if ([[instance objectForKey:@"visible"]  isEqual: @YES]) {
-                        state = FOREGROUND;
-                    } else {
-                        state = BACKGROUND;
-                    }
+                    state = STOPPED;
                 }
-                Application * newApp = [[Application alloc] initAppName:appName withAppId:appId logoUrl:logoUrl andState:state];
+                Application * newApp = [[Application alloc] initAppName:appName withAppId:appId withPackageName:packageName logoUrl:logoUrl andState:state];
                 [apps addObject:newApp];
             }
             callback(true, apps, nil);
@@ -52,13 +48,13 @@
     }];
 };
 
-- (void) getApplicationWithThatAppName:(NSString *)name ThenCall:(void (^)(BOOL, Application *, NSError *))callback {
+- (void) getApplicationWithThatPackageName:(NSString *)name ThenCall:(void (^)(BOOL, Application *, NSError *))callback {
     assert(name != nil && @"name must not be nil");
     [self getApplicationsThenCall:^(BOOL success, NSMutableArray *applications, NSError *error) {
         if (success) {
             Application * appFound = nil;
             for (Application *app in applications) {
-                if ([app.appName isEqualToString:name]) {
+                if ([app.packageName isEqualToString:name]) {
                     appFound = app;
                     break;
                 }
@@ -75,22 +71,22 @@
     }];
 }
 
-- (void) startApplicationWithThatAppName:(NSString *)name thenCall:(void (^)(BOOL, NSError *))callback {
-    assert(name != nil && @"appName must not be nil");
-    [client post:[NSString stringWithFormat:@"Applications/%@", name] withBody:nil thenCall:^(BOOL success, NSInteger statusCode, id response, NSError *error) {
+- (void) startApplicationWithThatPackageName:(NSString *)name thenCall:(void (^)(BOOL, NSError *))callback {
+    assert(name != nil && @"packageName must not be nil");
+    [client post:[NSString stringWithFormat:@"applications/%@", name] withBody:nil thenCall:^(BOOL success, NSInteger statusCode, id response, NSError *error) {
         if (callback != nil) {
             callback(success, error);
         }
     }];
 }
 
-- (void) startApplicationWithThatAppName:(NSString *)name {
-    [self startApplicationWithThatAppName:name thenCall:nil];
+- (void) startApplicationWithThatPackageName:(NSString *)name {
+    [self startApplicationWithThatPackageName:name thenCall:nil];
 }
 
 - (void) startApplication:(Application *)application thenCall:(void (^)(BOOL, NSError *))callback {
     assert(application != nil && @"application must not be nil");
-    [self startApplicationWithThatAppName:application.appName thenCall:callback];
+    [self startApplicationWithThatPackageName:application.packageName thenCall:callback];
 }
 
 - (void) startApplication:(Application *)application {
@@ -99,7 +95,7 @@
 
 - (void) stopApplicationWithThatAppId:(NSString *)appId thenCall:(void (^)(BOOL, NSError *))callback {
     assert(appId != nil && @"appId must not be nil");
-    [client del:[NSString stringWithFormat:@"Applications/Run/%@", appId] withParams:nil thenCall:^(BOOL success, NSInteger statusCode, id response, NSError *error) {
+    [client del:[NSString stringWithFormat:@"applications/run/%@", appId] withParams:nil thenCall:^(BOOL success, NSInteger statusCode, id response, NSError *error) {
         if (callback != nil) {
             callback(success, error);
         }
@@ -112,7 +108,7 @@
 
 - (void) stopApplication:(Application *)application thenCall:(void (^)(BOOL, NSError *))callback {
     assert(application != nil && @"application must not be nil");
-    [self getApplicationWithThatAppName:application.appName ThenCall:^(BOOL success, Application *applicationRet, NSError *error) {
+    [self getApplicationWithThatPackageName:application.packageName ThenCall:^(BOOL success, Application *applicationRet, NSError *error) {
         if (success) {
             if (applicationRet.state != STOPPED) {
                 [self stopApplicationWithThatAppId:applicationRet.appId thenCall:callback];

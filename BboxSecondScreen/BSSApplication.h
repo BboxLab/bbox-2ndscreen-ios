@@ -20,9 +20,10 @@ typedef NS_ENUM(NSInteger, ApplicationStateType) {
 @property NSString* appName;
 @property NSString* logoUrl;
 @property NSString* appId;
+@property NSString* packageName;
 @property ApplicationStateType state;
 
-- (id) initAppName:(NSString*)appName withAppId:(NSString*)appId logoUrl:(NSString*)logoUrl andState:(ApplicationStateType)state;
+- (id) initAppName:(NSString*)appName withAppId:(NSString*)appId withPackageName:(NSString *)initialPackageName logoUrl:(NSString*)logoUrl andState:(ApplicationStateType)state;
 
 
 

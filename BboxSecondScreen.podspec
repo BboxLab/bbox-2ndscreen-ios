@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
   s.version            = '0.2.2'
   s.summary            = 'A SecondScreen library for the Bbox'
   s.platform           = :ios
-  s.ios.deployment_target = "6.0"
+  s.ios.deployment_target = "7.0"
   s.homepage           = 'http://dev.bouyguestelecom.fr'
   s.authors            = 'Bouygues Telecom | BboxLab'
   s.license            = 'MIT'

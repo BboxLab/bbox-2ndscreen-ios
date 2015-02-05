@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		372028701A83760F0065E5A2 /* BSSConnectManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3720286F1A83760F0065E5A2 /* BSSConnectManager.m */; };
 		D9346BBA197024E30025DD02 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9346BB9197024E30025DD02 /* Foundation.framework */; };
 		D9346BC8197024E30025DD02 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9346BC7197024E30025DD02 /* XCTest.framework */; };
 		D9346BC9197024E30025DD02 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9346BB9197024E30025DD02 /* Foundation.framework */; };
@@ -46,6 +47,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3720286D1A83760F0065E5A2 /* BBSConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBSConstants.h; sourceTree = "<group>"; };
+		3720286E1A83760F0065E5A2 /* BSSConnectManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSSConnectManager.h; sourceTree = "<group>"; };
+		3720286F1A83760F0065E5A2 /* BSSConnectManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSSConnectManager.m; sourceTree = "<group>"; };
 		D9346BB6197024E30025DD02 /* libBboxSecondScreen.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBboxSecondScreen.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9346BB9197024E30025DD02 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D9346BBD197024E30025DD02 /* BboxSecondScreen-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BboxSecondScreen-Prefix.pch"; sourceTree = "<group>"; };
@@ -127,6 +131,9 @@
 		D9346BBB197024E30025DD02 /* BboxSecondScreen */ = {
 			isa = PBXGroup;
 			children = (
+				3720286D1A83760F0065E5A2 /* BBSConstants.h */,
+				3720286E1A83760F0065E5A2 /* BSSConnectManager.h */,
+				3720286F1A83760F0065E5A2 /* BSSConnectManager.m */,
 				D9346BDF1970259A0025DD02 /* BSSApplication.h */,
 				D9346BE01970259A0025DD02 /* BSSApplication.m */,
 				D9346BE11970259A0025DD02 /* BSSApplicationsManager.h */,
@@ -258,6 +265,7 @@
 				D9346BEE1970259A0025DD02 /* BSSApplication.m in Sources */,
 				D9346BF31970259A0025DD02 /* BSSBbox.m in Sources */,
 				D9346BF11970259A0025DD02 /* BSSRemoteManager.m in Sources */,
+				372028701A83760F0065E5A2 /* BSSConnectManager.m in Sources */,
 				D9346BEF1970259A0025DD02 /* BSSApplicationsManager.m in Sources */,
 				D9346BF21970259A0025DD02 /* BSSBboxManager.m in Sources */,
 				D9346BF41970259A0025DD02 /* BSSNotificationsManager.m in Sources */,

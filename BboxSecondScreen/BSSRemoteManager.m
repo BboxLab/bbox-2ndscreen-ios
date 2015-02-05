@@ -7,14 +7,9 @@
 //
 
 #import "BSSRemoteManager.h"
-
+#import "BBSConstants.h"
 @implementation RemoteManager
 
-static NSString * const USER_INTERFACE = @"userinterface";
-static NSString * const REMOTE_CONTROLLER = @"remotecontroller";
-static NSString * const KEY = @"key";
-static NSString * const TEXT = @"text";
-static NSString * const VOLUME = @"volume";
 
 - (id) initWithBboxRestClient:(BboxRestClient *)client {
     self.client = client;
@@ -22,7 +17,7 @@ static NSString * const VOLUME = @"volume";
 }
 
 - (void) sendThisKey:(NSString *)key ofThatType:(NSString *)type andThenCall:(void (^)(BOOL, NSError *))callback {
-    NSDictionary * body = @{@"key" : @{@"keyName": key, @"keyType": type}};
+    NSDictionary * body = @{KEY : @{KeyName_Key: key, KeyType_Key: type}};
     NSString * resource = [NSString stringWithFormat:@"%@/%@/%@", USER_INTERFACE, REMOTE_CONTROLLER, KEY];
     [self.client put:resource withBody:body thenCall:^(BOOL success, NSInteger statusCode, id response, NSError *error) {
         callback(success, error);
@@ -30,7 +25,7 @@ static NSString * const VOLUME = @"volume";
 }
 
 - (void) sendThisText:(NSString *)text thenCall:(void (^)(BOOL, NSError *))callback {
-    NSDictionary * body = @{@"text": text};
+    NSDictionary * body = @{TEXT: text};
     NSString * resource = [NSString stringWithFormat:@"%@/%@/%@", USER_INTERFACE, REMOTE_CONTROLLER, TEXT];
     [self.client post:resource withBody:body thenCall:^(BOOL success, NSInteger statusCode, id response, NSError *error) {
         callback(success, error);
@@ -42,7 +37,7 @@ static NSString * const VOLUME = @"volume";
     [self.client get:resource withParams:nil thenCall:^(BOOL success, NSInteger statusCode, id response, NSError *error) {
         if (success) {
             NSDictionary * result = response;
-            callback(success, [result objectForKey:@"volume"], nil);
+            callback(success, [result objectForKey:VOLUME], nil);
         } else {
             callback(success, nil, error);
         }
@@ -50,7 +45,7 @@ static NSString * const VOLUME = @"volume";
 }
 
 - (void) setVolumeTo:(NSString *)volume andCall:(void (^)(BOOL, NSError *))callback {
-    NSDictionary * body = @{@"volume": volume};
+    NSDictionary * body = @{VOLUME: volume};
     NSString * resource = [NSString stringWithFormat:@"%@/%@", USER_INTERFACE, VOLUME];
     [self.client post:resource withBody:body thenCall:^(BOOL success, NSInteger statusCode, id response, NSError *error) {
         callback(success, error);

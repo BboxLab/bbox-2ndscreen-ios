@@ -8,6 +8,7 @@
 
 #import "BSSApplicationsManager.h"
 #import "BSSApplication.h"
+#import "BBSConstants.h"
 
 @implementation ApplicationsManager
 
@@ -20,20 +21,20 @@
 
 - (void) getApplicationsThenCall:(void (^)(BOOL, NSMutableArray *, NSError *))callback {
     
-    [client get:@"applications" withParams:nil thenCall:^(BOOL success, NSInteger statusCode, id response, NSError *error) {
+    [client get:Applications_Key withParams:nil thenCall:^(BOOL success, NSInteger statusCode, id response, NSError *error) {
         if (success) {
             NSArray* res = response;
             NSMutableArray* apps = [[NSMutableArray alloc] init];
             for(NSDictionary* app in res) {
-                NSString *appName = [app objectForKey:@"appName"];
-                NSString *logoUrl = [app objectForKey:@"logoUrl"];
-                NSString *packageName = [app objectForKey:@"packageName"];
-                NSString *appId = [app objectForKey:@"appId"];
+                NSString *appName = [app objectForKey:AppName_Key];
+                NSString *logoUrl = [app objectForKey:LogoUrl_Key];
+                NSString *packageName = [app objectForKey:PackageName_Key];
+                NSString *appId = [app objectForKey:AppId_Key];
                 
                 ApplicationStateType state;
-                if ([[app objectForKey:@"appState"] isEqual: @"foreground"]) {
+                if ([[app objectForKey:AppState_Key] isEqual: Foreground_Key]) {
                     state = FOREGROUND;
-                } else if ([[app objectForKey:@"appState"] isEqual: @"background"]) {
+                } else if ([[app objectForKey:AppState_Key] isEqual: Background_Key]) {
                     state = BACKGROUND;
                 } else {
                     state = STOPPED;
@@ -119,22 +120,19 @@
     }];
 }
 
-- (void) stopApplication:(Application *)application {
-    [self stopApplication:application thenCall:nil];
-}
-
 - (void)getMyAppIdWithMyAppName:(NSString *)appName andThenCall:(void (^)(BOOL, NSString *, NSError *))callback {
     
-    NSDictionary * body = @{@"appName": appName};
+    NSDictionary * body = @{AppName_Key: appName};
     
     [client post:@"applications/register" withBody:body thenCallWithHeaders:^(BOOL success, NSInteger statusCode, NSDictionary *headers, id response, NSError *error) {
         if (success) {
-            NSArray * urlArray = [[headers objectForKey:@"Location"] componentsSeparatedByString:@"/"];
+            NSArray * urlArray = [[headers objectForKey:Location_Key] componentsSeparatedByString:@"/"];
             callback(success, [urlArray objectAtIndex:[urlArray count]-1], error);
         } else {
             callback(success, nil, error);
         }
     }];
+    
 }
 
 @end

@@ -11,12 +11,11 @@
 #import "BSSBboxManager.h"
 #import "BSSBbox.h"
 
+#import "BBSConstants.h"
 @implementation BboxManager
 
 @synthesize callback;
 
-static NSString * const MDNS_TYPE = @"_http._tcp";
-static NSString * const MDNS_DOMAIN = @"local";
 
 NSMutableArray * resolvers;
 
@@ -42,7 +41,7 @@ NSNetService *serviceResolver;
 #pragma mark NSNetserviceBrowserDelegate
 - (void)netServiceBrowser:(NSNetServiceBrowser *)aNetServiceBrowser didFindService:(NSNetService *)aNetService moreComing:(BOOL)moreComing
 {
-    if ([[aNetService name] isEqualToString:@"Bboxapi"]) {
+    if ([[aNetService name] isEqualToString:BBoxIp]) {
         aNetService.delegate = self;
         [aNetService resolveWithTimeout:0.0];
         [resolvers addObject:aNetService];

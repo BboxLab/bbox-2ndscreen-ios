@@ -7,7 +7,7 @@
 //
 
 #import "BSSNotificationsManager.h"
-
+#import "BBSConstants.h"
 /**
  Private methods for the Websocket delegate
  */
@@ -22,7 +22,6 @@
 
 @synthesize channelId;
 
-static NSString * const NOTIFICATION = @"notification";
 
 
 BboxRestClient * client;
@@ -38,7 +37,6 @@ NSMutableArray * notifications;
     notifications = [[NSMutableArray alloc] init];
     
     self.callbackArray = [[NSMutableArray alloc] init];
-    
     return self;
 }
 
@@ -46,7 +44,7 @@ NSMutableArray * notifications;
     webSocket.delegate = nil;
     webSocket = nil;
     
-    NSString *urlString =  [NSString  stringWithFormat: @"ws://%@:9090", client.ip];
+    NSString *urlString =  [NSString  stringWithFormat: URL_part, client.ip];
     
     SRWebSocket *newWebSocket = [[SRWebSocket alloc] initWithURL:[NSURL URLWithString:urlString]];
     
@@ -125,15 +123,15 @@ NSMutableArray * notifications;
     NSMutableArray * res = [[NSMutableArray alloc] init];
     
     for (NSString * notif in notifications) {
-        [res addObject:@{@"resourceId":notif}];
+        [res addObject:@{ResourceId:notif}];
     }
     
-    [body setObject:applicationId forKey:@"appId"];
-    [body setObject:res forKey:@"resources"];
+    [body setObject:applicationId forKey:AppId_Key];
+    [body setObject:res forKey:Resources_Key];
     
     [client post:NOTIFICATION withBody:body thenCallWithHeaders:^(BOOL success, NSInteger statusCode, NSDictionary *headers, id response, NSError *error) {
         if (success) {
-            NSArray * urlArray = [[headers objectForKey:@"Location"] componentsSeparatedByString:@"/"];
+            NSArray * urlArray = [[headers objectForKey:Location_Key] componentsSeparatedByString:@"/"];
             self.channelId = [urlArray objectAtIndex:[urlArray count]-1];
         }
         callback(success, error);
@@ -144,13 +142,14 @@ NSMutableArray * notifications;
     }];
 }
 
+
 - (void)sendThisMessage:(NSString *)message toChannelId:(NSString *)channelId {
     
     NSMutableDictionary * toSend = [[NSMutableDictionary alloc] init];
     
-    [toSend setObject:self.channelId forKey:@"destination"];
-    [toSend setObject:applicationId forKey:@"source"];
-    [toSend setObject:message forKey:@"body"];
+    [toSend setObject:self.channelId forKey:Destination_Key];
+    [toSend setObject:applicationId forKey:Source_Key];
+    [toSend setObject:message forKey:Body_Key];
     
     NSError *error;
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:toSend

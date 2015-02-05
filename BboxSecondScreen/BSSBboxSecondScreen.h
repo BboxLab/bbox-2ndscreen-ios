@@ -15,3 +15,7 @@
 #import <BboxSecondScreen/BSSRemoteManager.h>
 #import <BboxSecondScreen/BSSBbox.h>
 #import <BboxSecondScreen/BSSNotificationsManager.h>
+#import <BboxSecondScreen/BSSConnectManager.h>
+
+
+

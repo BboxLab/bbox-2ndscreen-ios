@@ -7,7 +7,6 @@
 //
 
 #import "BSSApplication.h"
-
 @implementation Application
 
 @synthesize appId;

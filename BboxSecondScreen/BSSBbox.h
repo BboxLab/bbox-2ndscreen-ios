@@ -12,7 +12,7 @@
 #import "BSSApplicationsManager.h"
 #import "BSSBboxRestClient.h"
 #import "BSSNotificationsManager.h"
-
+#import "BSSConnectManager.h"
 /**
  Object representation of a Bbox.
  */
@@ -22,6 +22,10 @@
  RemoteManager for the current Bbox
  */
 @property RemoteManager * remoteManager;
+/**
+ RemoteManager for the current Bbox
+ */
+@property ConnectManager * connectManager;
 
 /**
  ApplicationsManager for the current Bbox

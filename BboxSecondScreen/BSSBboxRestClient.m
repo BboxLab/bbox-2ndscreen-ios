@@ -7,12 +7,11 @@
 //
 
 #import "BSSBboxRestClient.h"
-
+#import "BBSConstants.h"
 @implementation BboxRestClient
 
 @synthesize ip;
 
-static NSString * const API_URL = @":8080/api.bbox.lan/v0/";
 static NSString * baseUrl;
 static AFHTTPRequestOperationManager * manager = nil;
 

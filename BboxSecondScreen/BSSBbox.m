@@ -11,6 +11,7 @@
 @implementation Bbox
 
 @synthesize remoteManager;
+@synthesize connectManager;
 @synthesize applicationsManager;
 @synthesize bboxRestClient;
 @synthesize notificationsManager;
@@ -22,6 +23,7 @@
     
     self.bboxRestClient = [[BboxRestClient alloc] initWithIp:self.ip];
     
+    self.connectManager = [[ConnectManager alloc] initWithBboxRestClient:self.bboxRestClient];
     self.remoteManager = [[RemoteManager alloc] initWithBboxRestClient:self.bboxRestClient];
     self.applicationsManager = [[ApplicationsManager alloc] initWith:self.bboxRestClient];
     return self;

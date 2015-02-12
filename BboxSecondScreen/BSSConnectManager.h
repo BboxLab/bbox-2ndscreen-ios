@@ -1,10 +1,11 @@
 //
 //  BSSConnectManager.h
-//  Pods
+//  BboxSecondScreen
 //
-//  Created by Nicolas Jaouen on 04/02/2015.
+//  Created by Nicolas Jaouen on 29/01/2015.
+//  Copyright (c) 2015 Bouygues Telecom. All rights reserved.
 //
-//
+
 
 #import "BSSBboxRestClient.h"
 @interface ConnectManager : NSObject

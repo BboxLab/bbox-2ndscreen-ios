@@ -35,7 +35,6 @@ NSNetService *serviceResolver;
     serviceBrowser = [[NSNetServiceBrowser alloc] init];
     serviceBrowser.delegate = self;
     [serviceBrowser searchForServicesOfType:MDNS_TYPE inDomain:MDNS_DOMAIN];
-    
 }
 
 #pragma mark NSNetserviceBrowserDelegate

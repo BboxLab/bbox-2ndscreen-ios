@@ -1,10 +1,11 @@
 //
 //  BSSConnectManager.m
-//  Pods
+//  BboxSecondScreen
 //
-//  Created by Nicolas Jaouen on 04/02/2015.
+//  Created by Nicolas Jaouen on 29/01/2015.
+//  Copyright (c) 2015 Bouygues Telecom. All rights reserved.
 //
-//
+
 
 #import "BSSConnectManager.h"
 #import "BBSConstants.h"
@@ -24,30 +25,35 @@
     [body setObject:App_ID forKey:AppId_Key];
     [body setObject:App_Secret forKey:AppSecret_Key];
     
-    [_client post:URL_Token withBody:body thenCallWithHeaders:^(BOOL success, NSInteger statusCode, NSDictionary *headers, id response, NSError *error) {
-        if (success) {
-            NSLog(@"%@",response);
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager POST:URL_Token parameters:body success:^(AFHTTPRequestOperation *operation, id responseObject) {        NSDictionary *headerData = [[operation response] allHeaderFields];
+        if ([headerData objectForKey:Token_Header_Key] != nil){
             NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-            [userDefaults setObject:response forKey:Token_userDefaults_Key];
+            [userDefaults setObject:[headerData objectForKey:Token_Header_Key] forKey:Token_userDefaults_Key];
             [userDefaults synchronize];
-            
         }
-        callback(success, error);
+        callback(1, 0);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+        callback(0, error);
     }];
-    
 }
 
+
+
+
 - (void) getSession:(void (^)(BOOL success, NSError * error))callback {
-    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSMutableDictionary * body = [[NSMutableDictionary alloc] init];
     
-    [body setObject:App_ID forKey:Token_Key];
-    
+    [body setObject:[userDefaults objectForKey:Token_userDefaults_Key]  forKey:Token_Key];
+
     [_client post:URL_Session withBody:body thenCallWithHeaders:^(BOOL success, NSInteger statusCode, NSDictionary *headers, id response, NSError *error) {
         if (success) {
-            NSLog(@"%@",response);
             NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-            [userDefaults setObject:response forKey:Session_userDefaults_Key];
+            [userDefaults setObject:[headers objectForKey:SessionId_Header_Key] forKey:Session_userDefaults_Key];
+            NSLog(@"Session_userDefaults_Key : %@",[userDefaults objectForKey:Session_userDefaults_Key]);
+            
             [userDefaults synchronize];
         }
         callback(success, error);

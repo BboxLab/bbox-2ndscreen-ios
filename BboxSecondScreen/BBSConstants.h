@@ -1,9 +1,9 @@
 //
 //  BBSConstants.h
-//  Pods
+//  BboxSecondScreen
 //
 //  Created by Nicolas Jaouen on 29/01/2015.
-//
+//  Copyright (c) 2015 Bouygues Telecom. All rights reserved.
 //
 
 // userDefaults
@@ -12,8 +12,8 @@
 
 
 //Application and developper code
-#define App_ID @"102-101" //@"YOUR App ID"
-#define App_Secret @"4F7DA667906D4098A04B337076C0BF71" //@"YOUR App Secret"
+#define App_ID @"YOUR App ID"
+#define App_Secret @"YOUR App Secret"
 
 
 // KEY
@@ -34,15 +34,18 @@
 #define KeyName_Key @"keyName"
 #define KeyType_Key @"keyType"
 #define Token_Key @"token"
+#define Token_Header_Key @"x-token"
+#define SessionId_Key @"sessionid"
+#define SessionId_Header_Key @"x-sessionid"
 
 //BBox api key
-#define BBoxIp @"bboxIp"
+#define BBoxIp @"Bboxapi"
 #define ResourceId @"resourceId"
 
 //part of url
 #define URL_part @"ws://%@:9090"
 #define URL_Token @"https://dev.bouyguestelecom.fr/security/token"
-#define URL_Session @"/security/sessionId"
+#define URL_Session @"security/sessionId"
 // static const
 static NSString * const MDNS_TYPE = @"_http._tcp";
 static NSString * const MDNS_DOMAIN = @"local";

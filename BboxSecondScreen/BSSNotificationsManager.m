@@ -103,6 +103,29 @@ NSMutableArray * notifications;
     
 }
 
+
+
+- (void) UpdateNotification:(NSString *)notification thenCall:(void (^)(BOOL, NSError *))callback {
+    
+    Boolean exist = false;
+    
+    for (NSString * notif in notifications) {
+        if ([notif isEqual:notification]) {
+            exist = true;
+        }
+    }
+    
+    if (!exist) {
+        [notifications addObject:notification];
+        NSLog(@"added");
+    }
+    
+    [self updateNotificationsThenCall:^(BOOL success, NSError *error) {
+        callback(success, error);
+    }];
+    
+}
+
 - (void) unSubscribeToNotification:(NSString *)notification thenCall:(void (^)(BOOL, NSError *))callback {
     
     for (NSString * notif in notifications) {
@@ -129,7 +152,14 @@ NSMutableArray * notifications;
     [body setObject:applicationId forKey:AppId_Key];
     [body setObject:res forKey:Resources_Key];
     
-    [client post:NOTIFICATION withBody:body thenCallWithHeaders:^(BOOL success, NSInteger statusCode, NSDictionary *headers, id response, NSError *error) {
+    
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSMutableDictionary * header = [[NSMutableDictionary alloc] init];
+    [header setObject:[userDefaults objectForKey:Session_userDefaults_Key]  forKey:SessionId_Header_Key];
+    
+    
+    [client post:NOTIFICATION withBody:body  withHeader:header  thenCallWithHeaders:^(BOOL success, NSInteger statusCode, NSDictionary *headers, id response, NSError *error) {
         if (success) {
             NSArray * urlArray = [[headers objectForKey:Location_Key] componentsSeparatedByString:@"/"];
             self.channelId = [urlArray objectAtIndex:[urlArray count]-1];

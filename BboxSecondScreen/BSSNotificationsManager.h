@@ -47,6 +47,13 @@
 - (void) unSubscribeToNotification:(NSString *)notification thenCall:(void (^)(BOOL success, NSError * error))callback;
 
 /**
+ Update to a resource
+ @param notification Resource you want to subscribe to ex: 'Application'
+ @param callback Result of the operation
+ */
+- (void) UpdateNotification:(NSString *)notification thenCall:(void (^)(BOOL, NSError *))callback;
+
+/**
  Subscribe to a resource
  @param notification Resource you want to subscribe to ex: 'Application'
  @param callback Result of the operation

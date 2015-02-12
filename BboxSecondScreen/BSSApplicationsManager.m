@@ -21,7 +21,14 @@
 
 - (void) getApplicationsThenCall:(void (^)(BOOL, NSMutableArray *, NSError *))callback {
     
-    [client get:Applications_Key withParams:nil thenCall:^(BOOL success, NSInteger statusCode, id response, NSError *error) {
+    
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSMutableDictionary * header = [[NSMutableDictionary alloc] init];
+    [header setObject:[userDefaults objectForKey:Session_userDefaults_Key]  forKey:SessionId_Header_Key];
+    
+        
+    [client get:Applications_Key withParams:nil withHeader:header thenCall:^(BOOL success, NSInteger statusCode, id response, NSError *error) {
         if (success) {
             NSArray* res = response;
             NSMutableArray* apps = [[NSMutableArray alloc] init];
@@ -74,7 +81,13 @@
 
 - (void) startApplicationWithThatPackageName:(NSString *)name thenCall:(void (^)(BOOL, NSError *))callback {
     assert(name != nil && @"packageName must not be nil");
-    [client post:[NSString stringWithFormat:@"applications/%@", name] withBody:nil thenCall:^(BOOL success, NSInteger statusCode, id response, NSError *error) {
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSMutableDictionary * header = [[NSMutableDictionary alloc] init];
+    [header setObject:[userDefaults objectForKey:Session_userDefaults_Key]  forKey:SessionId_Header_Key];
+    
+
+    [client post:[NSString stringWithFormat:@"applications/%@", name] withBody:nil withHeader:header  thenCall:^(BOOL success, NSInteger statusCode, id response, NSError *error) {
         if (callback != nil) {
             callback(success, error);
         }
@@ -96,7 +109,13 @@
 
 - (void) stopApplicationWithThatAppId:(NSString *)appId thenCall:(void (^)(BOOL, NSError *))callback {
     assert(appId != nil && @"appId must not be nil");
-    [client del:[NSString stringWithFormat:@"applications/run/%@", appId] withParams:nil thenCall:^(BOOL success, NSInteger statusCode, id response, NSError *error) {
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSMutableDictionary * header = [[NSMutableDictionary alloc] init];
+    [header setObject:[userDefaults objectForKey:Session_userDefaults_Key]  forKey:SessionId_Header_Key];
+    
+
+    [client del:[NSString stringWithFormat:@"applications/run/%@", appId] withParams:nil withHeader:header  thenCall:^(BOOL success, NSInteger statusCode, id response, NSError *error) {
         if (callback != nil) {
             callback(success, error);
         }
@@ -120,12 +139,20 @@
     }];
 }
 
-
 - (void)getMyAppIdWithMyAppName:(NSString *)appName andThenCall:(void (^)(BOOL, NSString *, NSError *))callback {
+     NSMutableDictionary * body = [[NSMutableDictionary alloc]
+                                 initWithObjectsAndKeys:appName,AppName_Key,
+                                 nil];
     
-    NSDictionary * body = @{AppName_Key: appName};
+  
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSMutableDictionary * header = [[NSMutableDictionary alloc] init];
+    [header setObject:[userDefaults objectForKey:Session_userDefaults_Key]  forKey:SessionId_Header_Key];
     
-    [client post:@"applications/register" withBody:body thenCallWithHeaders:^(BOOL success, NSInteger statusCode, NSDictionary *headers, id response, NSError *error) {
+
+    
+    
+    [client post:@"applications/register" withBody:body withHeader:header  thenCallWithHeaders:^(BOOL success, NSInteger statusCode, NSDictionary *headers, id response, NSError *error) {
         if (success) {
             NSArray * urlArray = [[headers objectForKey:Location_Key] componentsSeparatedByString:@"/"];
             callback(success, [urlArray objectAtIndex:[urlArray count]-1], error);

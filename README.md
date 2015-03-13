@@ -1,6 +1,6 @@
 bbox-2ndscreen-ios
 ==================
-The iOs 2ndscreen library is built to easily use the BboxAPI of the new BBox Miami.
+The iOs 2ndscreen library is built to easily use the BboxAPI of the new Bbox Miami.
 
 Full documentation here: http://dev.bouyguestelecom.fr/doc/#!SDK_2nd_screen_iOS.md
 

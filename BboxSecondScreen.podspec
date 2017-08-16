@@ -11,6 +11,6 @@ Pod::Spec.new do |s|
   s.source_files       = 'BboxSecondScreen/*.{h,m,c}'
   s.requires_arc       = true
   s.dependency 'SocketRocket'
-  s.dependency 'AFNetworking', "~> 2.0"
+  s.dependency 'AFNetworking'
   s.requires_arc       = true
 end
